@@ -2,16 +2,30 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import "./ToDoForm.css";
+const shortid = require("shortid");
 
 class ToDoForm extends React.Component {
   state = {
-    value: "",
+    value: { text: "" },
   };
 
   handleChange = (event) => {
-    this.setState({
-      value: event.target.value,
-    });
+  
+    if (event.target.value !== "") {
+      this.setState({
+        value: {
+          text: event.target.value,
+          id: shortid.generate(),
+          isCompleted : false
+        },
+      });
+    }
+  };
+
+  addList = () => {
+    if (this.state.value.text.trim() !== "") {
+      this.props.addList(this.state.value);
+    }
   };
 
   render() {
@@ -20,13 +34,16 @@ class ToDoForm extends React.Component {
         <TextField
           id="standard-multiline-flexible"
           placeholder="Enter here"
-          multiline
           rowsMax={4}
-          value={this.state.value}
+          value={this.state.value.text}
           onChange={this.handleChange}
-          style={{ width: '40%' }}
+          style={{ width: "40%" }}
         />
-        <IconButton color="primary" aria-label="add to shopping cart">
+        <IconButton
+          color="primary"
+          aria-label="add button"
+          onClick={this.addList}
+        >
           +
         </IconButton>
       </div>
