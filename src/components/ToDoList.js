@@ -11,8 +11,7 @@ class ToDoList extends React.Component{
 
      addToList = (value) => {
        this.setState({
-           list :  [value,...this.state.list]
-            
+           list :  [value,...this.state.list]        
        },()=>{console.log(this.state.list)}) 
     }
     

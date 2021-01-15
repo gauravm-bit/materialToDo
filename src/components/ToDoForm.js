@@ -10,13 +10,12 @@ class ToDoForm extends React.Component {
   };
 
   handleChange = (event) => {
-  
     if (event.target.value !== "") {
       this.setState({
         value: {
           text: event.target.value,
           id: shortid.generate(),
-          isCompleted : false
+          isCompleted: false,
         },
       });
     }
@@ -26,13 +25,16 @@ class ToDoForm extends React.Component {
     if (this.state.value.text.trim() !== "") {
       this.props.addList(this.state.value);
     }
+    this.setState({
+      value: { text: "" },
+    });
   };
 
   render() {
     return (
       <div className="form">
         <TextField
-          id="standard-multiline-flexible"
+          id="standard"
           placeholder="Enter here"
           rowsMax={4}
           value={this.state.value.text}
