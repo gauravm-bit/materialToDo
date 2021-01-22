@@ -33,6 +33,14 @@ class ToDoList extends React.Component {
     });
   };
 
+  delete = (id) => {
+    this.setState({
+      list : this.state.list.filter(todo => {
+        return todo.id !== id
+      })
+    })
+  }
+
 
   render() {
     return (
@@ -55,7 +63,7 @@ class ToDoList extends React.Component {
         <ToDoForm addList={this.addToList} />
         <div id="list">
           {this.state.list.map((todo) => {
-            return <ToDo key={todo.id} todo={todo} toggle={this.toggleState} />;
+            return <ToDo key={todo.id} todo={todo} toggle={this.toggleState} delete={this.delete} />;
           })}
         </div>
       </div>
