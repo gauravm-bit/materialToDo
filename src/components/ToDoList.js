@@ -31,8 +31,8 @@ class ToDoList extends React.Component {
     this.setState({
       list: [...newList],
     });
-    console.log(this.state.list);
   };
+
 
   render() {
     return (
@@ -44,12 +44,14 @@ class ToDoList extends React.Component {
             {this.state.list.filter((todo) => todo.isCompleted !== true).length}
           </p>
           <ButtonGroup>
-          <Button color="primary"> All</Button>
-          <Button color="primary">Completed</Button>
-          <Button color="primary">Delete Completed</Button>
+          <Button color="primary" > All </Button>
+          <Button color="primary" > Active </Button>
+          <Button color="primary" > Completed </Button>
           </ButtonGroup>
+          <Button color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
+            Delete Completed
+          </Button>
         </header>
-
         <ToDoForm addList={this.addToList} />
         <div id="list">
           {this.state.list.map((todo) => {
