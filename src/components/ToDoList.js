@@ -40,7 +40,14 @@ class ToDoList extends React.Component {
       })
     })
   }
-
+ 
+  deleteCompleted = () => {
+    this.setState({
+      list : this.state.list.filter(todo => {
+        return !todo.isCompleted
+      })
+    })
+  }
 
   render() {
     return (
@@ -56,7 +63,7 @@ class ToDoList extends React.Component {
           <Button color="primary" > Active </Button>
           <Button color="primary" > Completed </Button>
           </ButtonGroup>
-          <Button color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
+          <Button onClick = {this.deleteCompleted} color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
             Delete Completed
           </Button>
         </header>
