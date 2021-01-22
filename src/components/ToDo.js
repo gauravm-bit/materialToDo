@@ -13,11 +13,10 @@ const ToDo = (props) => {
     >
       {props.todo.text} 
     </div>
-    <Tooltip title="Delete">
+    <Tooltip title="Delete" placement="right" arrow>
     <IconButton onClick={() => props.delete(props.todo.id)} > <CancelIcon/></IconButton>
     </Tooltip>
     </div>
-   
   );
 };
 

@@ -8,6 +8,7 @@ import "./ToDoList.css";
 class ToDoList extends React.Component {
   state = {
     list: [],
+    todoShow : "all"
   };
 
   addToList = (value) => {
@@ -49,19 +50,37 @@ class ToDoList extends React.Component {
     })
   }
 
+  changeView = (s) => {
+    this.setState({
+      todoShow : s
+    })
+    console.log(s)
+  }
+
   render() {
+    let todos = [];
+
+    if(this.state.todoShow === "all"){
+      todos = this.state.list
+    }
+    else if(this.state.todoShow === "active"){
+      todos = this.state.list.filter(todo => !todo.isCompleted)
+    }
+    else if(this.state.todoShow === "completed"){
+      todos = this.state.list.filter(todo => todo.isCompleted)
+    }
     return (
       <div>
         <header id="heading">
           <h1>To-Do List</h1>
           <p>
             No of active todos :{" "}
-            {this.state.list.filter((todo) => todo.isCompleted !== true).length}
+            {todos.filter((todo) => todo.isCompleted !== true).length}
           </p>
           <ButtonGroup>
-          <Button color="primary" > All </Button>
-          <Button color="primary" > Active </Button>
-          <Button color="primary" > Completed </Button>
+          <Button color="primary" onClick = {()=>this.changeView("all")} > All </Button>
+          <Button color="primary" onClick = {()=>this.changeView("active")} > Active </Button>
+          <Button color="primary" onClick = {()=>this.changeView("completed")} > Completed </Button>
           </ButtonGroup>
           <Button onClick = {this.deleteCompleted} color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
             Delete Completed
@@ -69,7 +88,7 @@ class ToDoList extends React.Component {
         </header>
         <ToDoForm addList={this.addToList} />
         <div id="list">
-          {this.state.list.map((todo) => {
+          {todos.map((todo) => {
             return <ToDo key={todo.id} todo={todo} toggle={this.toggleState} delete={this.delete} />;
           })}
         </div>
