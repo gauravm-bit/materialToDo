@@ -78,9 +78,9 @@ class ToDoList extends React.Component {
             {todos.filter((todo) => todo.isCompleted !== true).length}
           </p>
           <ButtonGroup>
-          <Button color="primary" onClick = {()=>this.changeView("all")} > All </Button>
-          <Button color="primary" onClick = {()=>this.changeView("active")} > Active </Button>
-          <Button color="primary" onClick = {()=>this.changeView("completed")} > Completed </Button>
+          <Button  color = {this.state.todoShow ==="all" ? "secondary" : "primary" }  onClick = {()=>this.changeView("all")} > All </Button>
+          <Button color = {this.state.todoShow ==="active" ? "secondary" : "primary" } onClick = {()=>this.changeView("active")} > Active </Button>
+          <Button color = {this.state.todoShow ==="completed" ? "secondary" : "primary" } onClick = {()=>this.changeView("completed")} > Completed </Button>
           </ButtonGroup>
           <Button onClick = {this.deleteCompleted} color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
             Delete Completed
