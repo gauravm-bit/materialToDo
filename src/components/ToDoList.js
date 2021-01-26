@@ -73,7 +73,7 @@ class ToDoList extends React.Component {
           <h1>To-Do List</h1>
           <p>
             No of active todos :{" "}
-            {todos.filter((todo) => todo.isCompleted !== true).length}
+            {this.state.list.filter((todo) => todo.isCompleted !== true).length}
           </p>
           <ButtonGroup>
             <Button
