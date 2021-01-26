@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/materialtodo/static/css/main.681c4a1a.chunk.css",
-    "main.js": "/materialtodo/static/js/main.ec6957bf.chunk.js",
-    "main.js.map": "/materialtodo/static/js/main.ec6957bf.chunk.js.map",
+    "main.js": "/materialtodo/static/js/main.032a70e7.chunk.js",
+    "main.js.map": "/materialtodo/static/js/main.032a70e7.chunk.js.map",
     "runtime-main.js": "/materialtodo/static/js/runtime-main.4ad11e56.js",
     "runtime-main.js.map": "/materialtodo/static/js/runtime-main.4ad11e56.js.map",
     "static/js/2.64d4df6e.chunk.js": "/materialtodo/static/js/2.64d4df6e.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.4ad11e56.js",
     "static/js/2.64d4df6e.chunk.js",
     "static/css/main.681c4a1a.chunk.css",
-    "static/js/main.ec6957bf.chunk.js"
+    "static/js/main.032a70e7.chunk.js"
   ]
 }
