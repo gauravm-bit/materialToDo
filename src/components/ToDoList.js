@@ -8,7 +8,7 @@ import "./ToDoList.css";
 class ToDoList extends React.Component {
   state = {
     list: [],
-    todoShow : "all"
+    todoShow: "all",
   };
 
   addToList = (value) => {
@@ -36,38 +36,36 @@ class ToDoList extends React.Component {
 
   delete = (id) => {
     this.setState({
-      list : this.state.list.filter(todo => {
-        return todo.id !== id
-      })
-    })
-  }
- 
+      list: this.state.list.filter((todo) => {
+        return todo.id !== id;
+      }),
+    });
+  };
+
   deleteCompleted = () => {
     this.setState({
-      list : this.state.list.filter(todo => {
-        return !todo.isCompleted
-      })
-    })
-  }
+      list: this.state.list.filter((todo) => {
+        return !todo.isCompleted;
+      }),
+    });
+  };
 
   changeView = (s) => {
     this.setState({
-      todoShow : s
-    })
-    console.log(s)
-  }
+      todoShow: s,
+    });
+    console.log(s);
+  };
 
   render() {
     let todos = [];
 
-    if(this.state.todoShow === "all"){
-      todos = this.state.list
-    }
-    else if(this.state.todoShow === "active"){
-      todos = this.state.list.filter(todo => !todo.isCompleted)
-    }
-    else if(this.state.todoShow === "completed"){
-      todos = this.state.list.filter(todo => todo.isCompleted)
+    if (this.state.todoShow === "all") {
+      todos = this.state.list;
+    } else if (this.state.todoShow === "active") {
+      todos = this.state.list.filter((todo) => !todo.isCompleted);
+    } else if (this.state.todoShow === "completed") {
+      todos = this.state.list.filter((todo) => todo.isCompleted);
     }
     return (
       <div>
@@ -78,18 +76,51 @@ class ToDoList extends React.Component {
             {todos.filter((todo) => todo.isCompleted !== true).length}
           </p>
           <ButtonGroup>
-          <Button  color = {this.state.todoShow ==="all" ? "secondary" : "primary" }  onClick = {()=>this.changeView("all")} > All </Button>
-          <Button color = {this.state.todoShow ==="active" ? "secondary" : "primary" } onClick = {()=>this.changeView("active")} > Active </Button>
-          <Button color = {this.state.todoShow ==="completed" ? "secondary" : "primary" } onClick = {()=>this.changeView("completed")} > Completed </Button>
+            <Button
+              color = "primary"
+              variant = {this.state.todoShow === "all" ? "contained" : ""}
+              onClick = {() => this.changeView("all")}
+            >
+              {" "}
+              All{" "}
+            </Button>
+            <Button
+             color = "primary"
+             variant = {this.state.todoShow === "active" ? "contained" : ""}
+             onClick={() => this.changeView("active")}
+            >
+              {" "}
+              Active{" "}
+            </Button>
+            <Button
+             color = "primary"
+             variant = {this.state.todoShow === "completed" ? "contained" : ""}
+             onClick={() => this.changeView("completed")}
+            >
+              {" "}
+              Completed{" "}
+            </Button>
           </ButtonGroup>
-          <Button onClick = {this.deleteCompleted} color="primary" variant="outlined" style={{marginTop : "0.3em"}}>
+          <Button
+            onClick={this.deleteCompleted}
+            color="primary"
+            variant="outlined"
+            style={{ marginTop: "0.3em" }}
+          >
             Delete Completed
           </Button>
         </header>
         <ToDoForm addList={this.addToList} />
         <div id="list">
           {todos.map((todo) => {
-            return <ToDo key={todo.id} todo={todo} toggle={this.toggleState} delete={this.delete} />;
+            return (
+              <ToDo
+                key={todo.id}
+                todo={todo}
+                toggle={this.toggleState}
+                delete={this.delete}
+              />
+            );
           })}
         </div>
       </div>
